@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff and Student Information</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Staff and Student Information</h1>
+
+    <h2>Staff</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Group</th>
+        </tr>
+        </table>
+
+    <h2>Students</h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Gender</th>
+            <th>Group</th>
+        </tr>
+        </table>
+
+    <script>
+        // Replace with your logic to fetch data from a Django view
+        const staffData = [
+            { name: "John Doe", group: 1 },
+            { name: "Jane Smith", group: 2 }
+        ];
+        const studentData = [
+            { f_name: "Alice", gender: "Female", group: staffData[0] },
+            { f_name: "Bob", gender: "Male", group: staffData[1] }
+        ];
+
+        function displayStaffData() {
+            const tableBody = document.querySelector("table:first-child tbody");
+            staffData.forEach(staff {
+                const row = document.createElement("tr");
+                const nameCell = document.createElement("td");
+                nameCell.textContent = staff.name;
+                const groupCell = document.createElement("td");
+                groupCell.textContent = staff.group;
+                row.appendChild(nameCell);
+                row.appendChild(groupCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        function displayStudentData() {
+            const tableBody = document.querySelector("table:last-child tbody");
+            studentData.forEach(student = {
+                const row = document.createElement("tr");
+                const firstNameCell = document.createElement("td");
+                firstNameCell.textContent = student.f_name;
+                const genderCell = document.createElement("td");
+                genderCell.textContent = student.gender;
+                const groupCell = document.createElement("td");
+                groupCell.textContent = student.group.name; // Assuming 'name' field in Staff model
+                row.appendChild(firstNameCell);
+                row.appendChild(genderCell);
+                row.appendChild(groupCell);
+                tableBody.appendChild(row);
+            });
+        }
+
+        displayStaffData();
+        displayStudentData();
+    </script>
+</body>
+</html>
